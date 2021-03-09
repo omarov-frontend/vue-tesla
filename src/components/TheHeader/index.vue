@@ -5,43 +5,19 @@
                 <img src="../../assets/img/header-logo.png" alt="Tesla">
             </a>
             <nav class="nav">
-                <a
-                        v-for="(item, index) in menu"
-                        :key="index"
-                        class="nav__link nav__link_active"
-                        href="#"
-                >{{ item.modelS }}</a>
-                <a
+                <router-link
                         v-for="(item, index) in menu"
                         :key="index"
                         class="nav__link"
-                        href="#"
-                >{{ item.modelX }}</a>
-                <a
-                        v-for="(item, index) in menu"
-                        :key="index"
-                        class="nav__link"
-                        href="#"
-                >{{ item.model3 }}</a>
-                <a
-                        v-for="(item, index) in menu"
-                        :key="index"
-                        class="nav__link"
-                        href="#"
-                >{{ item.modelRoadster }}</a>
-                <a
-                        v-for="(item, index) in menu"
-                        :key="index"
-                        class="nav__link"
-                        href="#"
-                >{{ item.modelEnergy }}</a>
+                        :to="item.link"
+                >{{ item.name }}</router-link>
             </nav>
             <div class="header__login">
-                <a class="nav__link login__link" href="">Магазин</a>
-                <a class="nav__link login__link" href="">Войти</a>
-                <button class="header__burger">
-                    <img class="burger-btn" src="../../assets/img/header-burger.png" alt="burger">
-                </button>
+                <router-link
+                        class="nav__link login__link"
+                        to="/login"
+                >Войти
+                </router-link>
             </div>
         </div>
     </header>
@@ -55,12 +31,25 @@
             return {
                 menu: [
                     {
-                        modelS:  'Model S',
-                        modelX: 'Model X',
-                        model3: 'Model 3',
-                        modelRoadster: 'Roadster',
-                        modelEnergy: 'Energy',
+                        link: '/',
+                        name: 'Model S'
                     },
+                    {
+                        link: '/model-x',
+                        name: 'Model X'
+                    },
+                    {
+                        link: '/model-3',
+                        name: 'Model 3'
+                    },
+                    {
+                        link: '/roadster',
+                        name: 'Roadster'
+                    },
+                    {
+                        link: '/energy',
+                        name: 'Energy'
+                    }
                 ]
             }
         }
@@ -115,12 +104,12 @@
             }
         }
 
-        &__link_active,
+        .router-link-exact-active,
         &__link:hover {
             color: #E51937;
         }
 
-        &__link_active::after {
+        .router-link-exact-active::after {
             position: absolute;
             content: "";
             width: 60px;

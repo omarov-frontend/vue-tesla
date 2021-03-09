@@ -1,7 +1,5 @@
 <template>
     <div class="home">
-        <the-header />
-
         <section class="model">
             <h1 class="model__title">Model S</h1>
             <p class="model__subtitle">Добро пожаловать в будущее!</p>
@@ -135,14 +133,8 @@
 </template>
 
 <script>
-    import TheHeader from '../components/TheHeader';
-
     export default {
-        name: 'Home',
-
-        components: {
-            TheHeader,
-        }
+        name: 'Home'
     }
 </script>
 
