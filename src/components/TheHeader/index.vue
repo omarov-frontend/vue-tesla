@@ -5,15 +5,40 @@
                 <img src="../../assets/img/header-logo.png" alt="Tesla">
             </a>
             <nav class="nav">
-                <a class="nav__link nav__link_active" href="#">{{ modelS }}</a>
-                <a class="nav__link" href="#">{{ modelX }}</a>
-                <a class="nav__link" href="#">{{ model3 }}</a>
-                <a class="nav__link" href="#">{{ modelRoadster }}</a>
-                <a class="nav__link" href="#">{{ modelEnergy }}</a>
+                <a
+                        v-for="(item, index) in menu"
+                        :key="index"
+                        class="nav__link nav__link_active"
+                        href="#"
+                >{{ item.modelS }}</a>
+                <a
+                        v-for="(item, index) in menu"
+                        :key="index"
+                        class="nav__link"
+                        href="#"
+                >{{ item.modelX }}</a>
+                <a
+                        v-for="(item, index) in menu"
+                        :key="index"
+                        class="nav__link"
+                        href="#"
+                >{{ item.model3 }}</a>
+                <a
+                        v-for="(item, index) in menu"
+                        :key="index"
+                        class="nav__link"
+                        href="#"
+                >{{ item.modelRoadster }}</a>
+                <a
+                        v-for="(item, index) in menu"
+                        :key="index"
+                        class="nav__link"
+                        href="#"
+                >{{ item.modelEnergy }}</a>
             </nav>
             <div class="header__login">
-                <a class="nav__link login__link" href="">{{ modelShop }}</a>
-                <a class="nav__link login__link" href="">{{ modelLogin }}</a>
+                <a class="nav__link login__link" href="">Магазин</a>
+                <a class="nav__link login__link" href="">Войти</a>
                 <button class="header__burger">
                     <img class="burger-btn" src="../../assets/img/header-burger.png" alt="burger">
                 </button>
@@ -28,26 +53,30 @@
 
         data() {
             return {
-                modelS: 'Model S',
-                modelX: 'Model X',
-                model3: 'Model 3',
-                modelRoadster: 'Roadster',
-                modelEnergy: 'Energy',
-                modelShop: 'Магазин',
-                modelLogin: 'Войти',
+                menu: [
+                    {
+                        modelS:  'Model S',
+                        modelX: 'Model X',
+                        model3: 'Model 3',
+                        modelRoadster: 'Roadster',
+                        modelEnergy: 'Energy',
+                    },
+                ]
             }
         }
     }
 </script>
 
 <style lang="scss" scoped>
-    .container {
+    @mixin container() {
         max-width: 1440px;
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .header {
         &__inner {
+            @include container();
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,14 +102,6 @@
     }
 
     .nav {
-        @media (max-width: 980px) {
-            display: none;
-        }
-
-        &__link:last-child {
-            margin-right: 0;
-        }
-
         &__link {
             display: inline-block;
             text-decoration: none;
@@ -88,6 +109,10 @@
             color: #000;
             font-weight: 600;
             transition: color .2s ease-in-out;
+
+            &:last-child {
+                margin-right: 0;
+            }
         }
 
         &__link_active,
@@ -104,6 +129,10 @@
             display: block;
             border-bottom-left-radius: 5px 2px;
             border-bottom-right-radius: 5px 2px;
+        }
+
+        @media (max-width: 980px) {
+            display: none;
         }
     }
 
